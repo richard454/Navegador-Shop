@@ -1,0 +1,249 @@
+/* styles.css */
+/* Reset y variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --negro: #0a0a0a;
+    --morado-neon: #bc13fe;
+    --cyan-neon: #00d4ff;
+    --texto: #e0e0e0;
+    --gris: #1f1f1f;
+}
+
+body {
+    font-family: 'Segoe UI', system_ui, sans-serif;
+    background-color: var(--negro);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: var(--negro);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--morado-neon);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--morado-neon), var(--cyan-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px var(--morado-neon);
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--cyan-neon);
+}
+
+.whatsapp-header {
+    background: var(--morado-neon);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #0a0a0a, #1a0033);
+    padding: 120px 5% 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(188,19,254,0.15) 0%, transparent 70%);
+    animation: pulse 8s infinite;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--morado-neon), var(--cyan-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.slogan {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.envios-gratis {
+    font-size: 1.3rem;
+    color: var(--cyan-neon);
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background: var(--morado-neon);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--cyan-neon);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--cyan-neon);
+}
+
+/* PRODUCTOS */
+.productos {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--cyan-neon);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: var(--gris);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid #333;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 0 35px rgba(188, 19, 254, 0.4);
+}
+
+.product-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 1rem 1.5rem 0.5rem;
+    font-size: 1.3rem;
+}
+
+.product-desc {
+    padding: 0 1.5rem;
+    color: #aaa;
+    font-size: 0.95rem;
+    min-height: 80px;
+}
+
+.product-price {
+    padding: 0 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--morado-neon);
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--cyan-neon);
+    color: var(--cyan-neon);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.buy-btn:hover {
+    background: var(--cyan-neon);
+    color: var(--negro);
+    box-shadow: 0 0 20px var(--cyan-neon);
+}
+
+/* ENVÍOS y CONTACTO */
+.envios, .contacto {
+    padding: 60px 5%;
+    text-align: center;
+    background: #111;
+}
+
+.envios h2, .contacto h2 {
+    color: var(--morado-neon);
+    margin-bottom: 1.5rem;
+}
+
+.contacto p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+/* FOOTER */
+footer {
+    background: #050505;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    nav {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero {
+        padding: 80px 5% 60px;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+}
