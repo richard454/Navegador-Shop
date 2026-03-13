@@ -3,463 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NavegadorShop | Tienda Online Paraguay</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #0f0f0f;
-            color: white;
-        }
-
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .logo {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tagline {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-        }
-
-        /* NAV */
-        nav {
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid #667eea;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            list-style: none;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #667eea;
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* SERVICIOS */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .service-icon {
-            font-size: 48px;
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #bbb;
-            line-height: 1.6;
-        }
-
-        /* PRODUCTOS */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 2px solid #2a2a2a;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 64px;
-            color: white;
-        }
-
-        .product-info {
-            padding: 25px;
-        }
-
-        .product-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .product-description {
-            color: #bbb;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .product-price {
-            font-size: 24px;
-            color: #667eea;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .product-button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border: none;
-            color: white;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .product-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        /* CONTACTO */
-        .contact-section {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            padding: 60px 20px;
-            border-radius: 20px;
-            text-align: center;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-icon {
-            font-size: 48px;
-            color: #667eea;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: #667eea;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #0a0a0a;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
-            border-top: 2px solid #667eea;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: #bbb;
-            font-size: 28px;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 36px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+    <title>NavegadorShop - Tienda Online Paraguay</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <!-- HEADER -->
     <header>
-        <div class="logo">🦊 NavegadorShop</div>
-        <p class="tagline">Tu tienda online en Paraguay | Envíos a todo el país</p>
-        <a href="#productos" class="cta-button">Ver Productos</a>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">NavegadorShop</span>
+            </div>
+            <nav>
+                <a href="#productos">Productos</a>
+                <a href="#envios">Envíos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <div class="contact-header">
+                <a href="https://wa.me/595982590285" target="_blank" class="whatsapp-header">
+                    📱 WhatsApp
+                </a>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <section id="servicios">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Desarrollo Web</h3>
-                    <p>Creamos páginas web profesionales para tu negocio. Landing pages, e-commerce y más.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-store"></i></div>
-                    <h3>Sistemas de Gestión</h3>
-                    <p>DiGuork y StockControl: sistemas completos para administrar tu kiosco o tienda.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>Venta de Productos</h3>
-                    <p>Notebooks, monitores, accesorios tech y más. Productos de calidad a los mejores precios.</p>
-                </div>
-            </div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>NavegadorShop</h1>
+            <p class="slogan">Tu tienda online de tecnología en Paraguay</p>
+            <p class="envios-gratis">🚚 Envíos GRATIS en Asunción y Gran Asunción</p>
+            <a href="#productos" class="btn-primary">Ver productos</a>
         </div>
     </section>
 
-    <section id="productos">
-        <div class="container">
-            <h2>Productos Destacados</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image"><i class="fas fa-laptop"></i></div>
-                    <div class="product-info">
-                        <div class="product-title">Notebooks HP</div>
-                        <div class="product-description">i5 8va generación, 16GB RAM, 256GB SSD</div>
-                        <div class="product-price">₲1.800.000</div>
-                        <button class="product-button" onclick="contactWhatsApp('Notebook HP i5')">Consultar</button>
-                    </div>
-                </div>
+    <!-- PRODUCTOS -->
+    <section id="productos" class="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="products-grid">
 
-                <div class="product-card">
-                    <div class="product-image"><i class="fas fa-desktop"></i></div>
-                    <div class="product-info">
-                        <div class="product-title">Monitores Samsung</div>
-                        <div class="product-description">16" Full HD, perfecto estado</div>
-                        <div class="product-price">₲200.000</div>
-                        <button class="product-button" onclick="contactWhatsApp('Monitor Samsung')">Consultar</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image"><i class="fas fa-box"></i></div>
-                    <div class="product-info">
-                        <div class="product-title">DiGuork - Sistema</div>
-                        <div class="product-description">Gestión completa para tu negocio</div>
-                        <div class="product-price">Consultar</div>
-                        <button class="product-button" onclick="contactWhatsApp('Sistema DiGuork')">Más Info</button>
-                    </div>
-                </div>
+            <!-- Producto 1 - EJEMPLO -->
+            <div class="product-card" data-name="Auriculares Bluetooth Pro" data-price="250000 Gs">
+                <img src="https://picsum.photos/id/1015/400/300" alt="Auriculares Bluetooth Pro" class="product-img">
+                <h3>Auriculares Bluetooth Pro</h3>
+                <p class="product-desc">Cancelación de ruido, 30 horas de batería y sonido premium.</p>
+                <p class="product-price">250.000 Gs</p>
+                <button class="buy-btn">Comprar vía WhatsApp</button>
             </div>
+
+            <!-- Producto 2 - EJEMPLO -->
+            <div class="product-card" data-name="Mouse Inalámbrico RGB" data-price="85000 Gs">
+                <img src="https://picsum.photos/id/201/400/300" alt="Mouse Inalámbrico RGB" class="product-img">
+                <h3>Mouse Inalámbrico RGB</h3>
+                <p class="product-desc">Ergonomía perfecta, 6 botones y batería recargable.</p>
+                <p class="product-price">85.000 Gs</p>
+                <button class="buy-btn">Comprar vía WhatsApp</button>
+            </div>
+
+            <!-- Producto 3 - EJEMPLO -->
+            <div class="product-card" data-name="Teclado Mecánico Compacto" data-price="180000 Gs">
+                <img src="https://picsum.photos/id/29/400/300" alt="Teclado Mecánico Compacto" class="product-img">
+                <h3>Teclado Mecánico Compacto</h3>
+                <p class="product-desc">Switches Blue, RGB y diseño minimalista para gamers y oficina.</p>
+                <p class="product-price">180.000 Gs</p>
+                <button class="buy-btn">Comprar vía WhatsApp</button>
+            </div>
+
+            <!-- === MOLDE / TEMPLATE PARA NUEVOS PRODUCTOS ===
+                 Copia y pega TODO este bloque dentro de .products-grid
+                 Reemplaza las partes entre [CORCHETES] 
+            -->
+            <!-- 
+            <div class="product-card" data-name="[Nombre del Producto]" data-price="[Precio Gs]">
+                <img src="assets/[nombre-imagen.jpg]" alt="[Nombre del Producto]" class="product-img">
+                <h3>[Nombre del Producto]</h3>
+                <p class="product-desc">[Descripción breve del producto - máximo 2 líneas]</p>
+                <p class="product-price">[Precio Gs]</p>
+                <button class="buy-btn">Comprar vía WhatsApp</button>
+            </div>
+            -->
+
         </div>
     </section>
 
-    <section id="contacto">
-        <div class="container">
-            <div class="contact-section">
-                <h2>Contáctanos</h2>
-                <p style="color: #bbb; margin-bottom: 30px;">¿Tenés dudas? ¡Hablemos por WhatsApp!</p>
-                
-                <div class="contact-methods">
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp contact-icon"></i>
-                        <strong>WhatsApp</strong>
-                        <a href="https://wa.me/595982590285">0982 590 285</a>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fab fa-instagram contact-icon"></i>
-                        <strong>Instagram</strong>
-                        <a href="https://instagram.com/navegador.shop" target="_blank">@navegador.shop</a>
-                    </div>
-
-                    <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <strong>Email</strong>
-                        <a href="mailto:2196rich@gmail.com">2196rich@gmail.com</a>
-                    </div>
-                </div>
-
-                <div style="margin-top: 40px;">
-                    <a href="https://wa.me/595982590285?text=Hola! Vi tu página web y me interesa:" class="cta-button">
-                        <i class="fab fa-whatsapp"></i> Chatear Ahora
-                    </a>
-                </div>
-            </div>
+    <!-- ENVÍOS -->
+    <section id="envios" class="envios">
+        <div class="envios-content">
+            <h2>Envíos Gratis</h2>
+            <p>Entrega sin costo en toda Asunción y Gran Asunción.<br>
+            Envíos a todo Paraguay con costo adicional (consultar por WhatsApp).</p>
         </div>
     </section>
 
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto">
+        <h2>¿Dudas? Escríbenos</h2>
+        <p class="email">📧 <a href="mailto:navegadoronlinetienda@gmail.com">navegadoronlinetienda@gmail.com</a></p>
+        <p class="whatsapp-footer">
+            <a href="https://wa.me/595982590285" target="_blank">📱 +595 982 590 285</a>
+        </p>
+        <p class="horario">🕒 Horario: 9:00 a.m. - 6:00 p.m. (todos los días)</p>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <div class="social-links">
-            <a href="https://instagram.com/navegador.shop" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com/@navegador.shop" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/595982590285" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://github.com/richard454" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-        <p>© 2025 NavegadorShop | Tienda Online Paraguay</p>
-        <p style="color: #666; font-size: 14px; margin-top: 10px;">Envíos a todo Asunción y Gran Asunción</p>
+        <p>&copy; 2026 NavegadorShop - Tienda Online Paraguay</p>
+        <p>Todos los derechos reservados</p>
     </footer>
 
-    <script>
-        function contactWhatsApp(producto) {
-            const mensaje = `Hola! Me interesa: ${producto}`;
-            const url = `https://wa.me/595982590285?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
